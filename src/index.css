@@ -1,13 +1,275 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body, html {
+  height: 100%;
+  width: 100%;
+  background-color: #f4f7fa;
+}
+
+.dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.live-ticker {
+  background-color: #2a3f54;
+  color: white;
+  padding: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ticker-content {
+  display: inline-block;
+  animation: tickerMove 15s linear infinite;
+}
+
+@keyframes tickerMove {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.dashboard-grid {
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.incident-histogram {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.incident-histogram h3 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.bars {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+}
+
+.bar {
+  width: 30px;
+  background-color: #2c3e50;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* .scrollable {
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+} */
+
+/* .scrollable div {
+  padding: 5px 0;
+} */
+
+.dropdown {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #f4f7fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.network-map {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.network-node {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.node-green {
+  background-color: #4caf50;
+}
+
+.node-yellow {
+  background-color: #ffeb3b;
+}
+
+.node-red {
+  background-color: #f44336;
+}
+.dashboard-grid {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.incident-container {
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+}
+
+.incident-list {
+  height: 400px;
+
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 48%;
+}
+
+.incident-list h3 {
+  
+  background-color: #34495e;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incident-card {
+  
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.incident-card strong {
+  font-size: 16px;
+  color: #3498db;
+}
+
+.incident-card p {
+  
+  margin: 5px 0 0;
+  color: #666;
+}
+
+/* Vertical line between Active and Resolved Incidents */
+.incident-container::before {
+  height: 400px;
+
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #ccc;
+}
+
+
+.incident-container > div {
+  height: 362px;
+  flex: 1;
+}
+.incident-container > div {
+  height: 362px;
+  flex: 1;
+}
+.dashboard-grid {
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  flex-grow: 1;
+  /* overflow-y: auto; */
+}
+.dashboard-grid > div {
+  height: 450px;
+
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.header {
+  background-color: #34495e;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  gap: 20px;
+}
+
+.header-right button {
+  background-color: #2a3f54;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header-right button:hover {
+  background-color: #1f2b38;
+}
+
+.word-cloud {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  margin-top: 20px;
 }

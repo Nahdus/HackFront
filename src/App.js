@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import NewTicketComponent from './components/NewTicketComponent'; // Ensure correct path
+import SettingsComponent from './components/SettingsComponent'; 
+import React, { useState } from 'react';
+import Header from './components/Header';
 
 function App() {
+  const [activeComponent, setActiveComponent] = useState('dashboard'); // Default to 'dashboard'
+
+  const handleButtonClick = (component) => {
+    setActiveComponent(component);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header onButtonClick={handleButtonClick} />
+      <main>
+        {activeComponent === 'dashboard' && <Dashboard />}
+        {activeComponent === 'newTicket' && <NewTicketComponent />}
+        {activeComponent === 'settings' && <SettingsComponent />}
+      </main>
     </div>
   );
 }
+
 
 export default App;
