@@ -148,17 +148,18 @@ body, html {
 }
 
 .incident-container {
-  height: 400px;
   display: flex;
+  height: 400px;
   justify-content: space-between;
   gap: 20px;
   width: 100%;
   position: relative;
+  overflow-y: auto;
 }
 
 .incident-list {
   height: 400px;
-
+  /* overflow-y: auto; */
   background-color: #f9f9f9;
   padding: 20px;
   border: 1px solid #ccc;
@@ -197,7 +198,7 @@ body, html {
 }
 
 /* Vertical line between Active and Resolved Incidents */
-.incident-container::before {
+/* .incident-container::before {
   height: 400px;
 
   content: '';
@@ -207,7 +208,7 @@ body, html {
   bottom: 0;
   width: 2px;
   background-color: #ccc;
-}
+} */
 
 
 .incident-container > div {
@@ -272,4 +273,207 @@ body, html {
   width: 100%;
   height: 300px; /* Adjust height as needed */
   margin-top: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Space between heading and map */
+}
+
+.network-map {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+.expanded-canvas-container {
+  
+  width: 100%;
+  height: 500px; /* Adjust height for the expanded view */
+}
+
+.popup {
+  position: fixed;
+  top: 77px;
+  left: 139px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 80%;
+  height: 87%;
+  overflow: hidden;
+  animation: slideIn 0.3s ease; /* Slide-in effect */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  animation: slideIn 0.3s ease; /* Slide-in effect */
+
+}
+
+.coordinate-limits {
+  margin-bottom: 10px;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 400px; /* Fixed height for the canvas */
+  overflow: auto; /* Show scrollbar if necessary */
+}
+.active-incidents {
+  padding: 20px;
+}
+
+.scroll-class {
+  padding-top:7px;
+  padding-bottom:5px;
+
+
+  max-height: 265px;
+  overflow-y: auto;
+}
+
+.incident-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.ticket-category {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+.ticket-time {
+  font-size: 0.9em;
+  color: gray;
+}
+
+.priority-p1 {
+  background-color: #f8d7da; /* Red background for P1 */
+  border-left: 5px solid #dc3545;
+}
+
+.priority-p2 {
+  background-color: #fff3cd; /* Yellow background for P2 */
+  border-left: 5px solid #ffc107;
+}
+
+.priority-p3 {
+  background-color: #d4edda; /* Green background for P3 */
+  border-left: 5px solid #28a745;
+}
+
+/* Popup styling */
+/* .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.popup-content pre {
+  background-color: #f1f1f1;
+  padding: 10px;
+  overflow-x: auto;
+} */
+.ticket-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Darker semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.ticket-popup {
+  background-color: #fff; /* White background for the popup */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding around the content */
+  width: 450px; /* Fixed width */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  animation: slideIn 0.3s ease; /* Slide-in effect */
+}
+
+.ticket-popup-title {
+  margin: 0 0 15px; /* Margin below the title */
+  font-size: 26px; /* Larger font for the title */
+  color: #2c3e50; /* Dark color for the title */
+}
+
+.ticket-popup-content {
+  display: flex;
+  flex-direction: column; /* Stack details vertically */
+}
+
+.ticket-detail {
+  margin-bottom: 12px; /* Space between details */
+  font-size: 18px; /* Font size for details */
+  color: #34495e; /* Medium color for details */
+}
+
+.ticket-detail strong {
+  font-weight: bold; /* Bold label */
+  color: #000; /* Dark color for labels */
+}
+
+.ticket-close-popup {
+  background-color: #3498db; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  border-radius: 6px; /* Rounded corners */
+  padding: 12px 16px; /* Padding inside the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-top: 20px; /* Margin above the button */
+  transition: background-color 0.3s; /* Transition for hover effect */
+  font-size: 16px; /* Font size for button text */
+}
+
+.ticket-close-popup:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0; /* Start invisible */
+      transform: translateY(-20px); /* Slide in from above */
+  }
+  to {
+      opacity: 1; /* End fully visible */
+      transform: translateY(0); /* End in original position */
+  }
 }

@@ -11,6 +11,9 @@ function App() {
   const handleButtonClick = (component) => {
     setActiveComponent(component);
   };
+  
+    // Simulate incoming tickets updating over time
+ 
 
   return (
     <div className="app">
